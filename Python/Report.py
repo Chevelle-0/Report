@@ -39,7 +39,8 @@ def executeChoice(choice):
         complete1 = 1
     if complete1 == 0:
       print("Overseas airport code does not match any in database")
-  printMenu()
+  choice = printMenu()
+  executeChoice(choice)
   if choice == 5:
     print("Quitting...")
     quit()
