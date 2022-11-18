@@ -9,6 +9,8 @@ choice = 0
 UKairportCode = ""
 nonUKairportCode = ""
 complete1 = 0
+repeat = True
+x = 1
 
 #FUNCTIONS
 def printMenu():
@@ -24,7 +26,6 @@ def executeChoice(choice):
     #UK CODE
     UKairportCode = input("Enter three letter code of UK airport\n")
     while UKairportCode != "LPL" and UKairportCode != "BOH":
-      UKairportCode = input("Enter three letter code of UK airport\n")
       if UKairportCode != "LPL" and UKairportCode != "BOH":
         print('Error: UK airport code must be "LPL" or "BOH"\n')
     #OVERSEAS CODE
@@ -35,16 +36,21 @@ def executeChoice(choice):
         print('Error: UK airport code must not be "LPL" or "BOH"\n')
     for i in range(len(airportCodes)):
       if nonUKairportCode == airportCodes[i]:
-        print(airportNames[i])
+        print("\nName of airport with given code:\n" + airportNames[i] + "\n")
         complete1 = 1
     if complete1 == 0:
-      print("Overseas airport code does not match any in database")
-  choice = printMenu()
-  executeChoice(choice)
+      print("Overseas airport code does not match any in database\n")
+  repeat = True
+  print("Operation complete, returning to main menu... \n")
+  return repeat
   if choice == 5:
     print("Quitting...")
     quit()
 
 #MAIN
-choice = printMenu()
-executeChoice(choice)
+while x == 1:
+  if repeat == True:
+    choice = printMenu()
+    repeat = executeChoice(choice)
+  else:
+    x = 0
