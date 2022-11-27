@@ -1,3 +1,4 @@
+import time
 #LISTS
 airportCodes = ["JFK", "ORY", "MAD", "AMS", "CAI"]
 airportNames = ["John F Kennedy International", "Paris-Orly", "Adolfo Suarez MAdrid-Bajaras", "Amsterdam Schipol", "Cairo International"]
@@ -50,16 +51,15 @@ def executeChoice(choice):
           complete1 = 1
       if complete1 == 0:
         print("Error: Overseas airport code did not match any in database!\n")
+    time.sleep(2)
     print("Operation complete, returning to main menu... \n")
+    time.sleep(1)
     return repeat
   if choice == 5:
     print("Quitting...")
     quit()
 
 #MAIN
-while x == 1:
-  if repeat == True:
-    choice = printMenu()
-    repeat = executeChoice(choice)
-  else:
-    x = 0
+while repeat == True:
+  choice = printMenu()
+  repeat = executeChoice(choice)
