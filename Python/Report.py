@@ -11,7 +11,6 @@ UKairportCode = ""
 nonUKairportCode = ""
 complete1 = 0
 repeat = True
-x = 1
 
 #FUNCTIONS
 def printMenu():
