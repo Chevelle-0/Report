@@ -4,6 +4,7 @@ airportCodes = ["JFK", "ORY", "MAD", "AMS", "CAI"]
 airportNames = ["John F Kennedy International", "Paris-Orly", "Adolfo Suarez MAdrid-Bajaras", "Amsterdam Schipol", "Cairo International"]
 distanceFromLPL = [5326, 629, 1428, 526, 3779]
 distanceFromBOH = [5486, 379, 1151, 489, 3584]
+details = [["Boeing 737", "£8", "2650", "180", "8"], ["Airbus 321", "£7", "5600", "220", "10"], ["Boeing 787", "£5", "4050", "406", "14"]]
 
 #VARIABLES
 choice = 0
@@ -14,10 +15,10 @@ repeat = True
 
 #FUNCTIONS
 def printMenu():
-  print("[1] Enter airport details\n[2] Enter flight detauils\n[3] Enter price plan and calculate profit\n[4] Clear data\n[5] Quit")
+  print("[1] Enter airport details\n[2] Enter flight details\n[3] Enter price plan and calculate profit\n[4] Clear data\n[5] Quit")
   choice = 0
   while choice > 5 or choice < 1:
-    choice = int(input("\nEnter a number from 1 to 5 representing your choice\n"))
+    choice = int(input("\nEnter a number from 1 to 5 representing your choice"))
     print("\n")
   return choice
 
@@ -54,6 +55,25 @@ def executeChoice(choice):
     print("Operation complete, returning to main menu... \n")
     time.sleep(1)
     return repeat
+  #FLIGHT DETAILS
+  if choice == 2:
+    aircraftType = input("Enter type of aircraft")
+    if aircraftType != details[0][0] and aircraftType != details[1][0] and aircraftType != details[2][0]:
+        print("\nError: invalid aircraft type\n")
+        time.sleep(1)
+        print("Returning to main menu...\n")
+        time.sleep(1)
+        repeat = True
+        return repeat
+    elif aircraftType == details[0][0]:
+      for i in range(4):
+        print("Name: " + details[0][i] + "\n")
+    elif aircraftType == details[1][0]:
+      for i in range(4):
+        print("Running cost per seat per 100km" + details[1][i] + "\n")
+    elif aircraftType == details[2][0]:
+      for i in range(4):
+        print("Maximum number of economy seats" + details[2][i] + "\n")
   if choice == 5:
     print("Quitting...")
     quit()
