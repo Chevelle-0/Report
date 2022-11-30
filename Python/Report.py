@@ -66,14 +66,23 @@ def executeChoice(choice):
         repeat = True
         return repeat
     elif aircraftType == details[0][0]:
-      for i in range(4):
-        print("Name: " + details[0][i] + "\n")
+      print("Name: " + details[0][0])
+      print("Running cost per seat per 100km: " + details[0][1])
+      print("Maximum number of economy seats: " + details[0][2])
+      print("Details 4: " + details[0][3])
+      print("Details 5: " + details[0][4])
     elif aircraftType == details[1][0]:
-      for i in range(4):
-        print("Running cost per seat per 100km" + details[1][i] + "\n")
+      print("Name: " + details[1][0])
+      print("Running cost per seat per 100km: " + details[1][1])
+      print("Maximum number of economy seats: " + details[1][2])
+      print("Details 4: " + details[1][3])
+      print("Details 5: " + details[1][4])
     elif aircraftType == details[2][0]:
-      for i in range(4):
-        print("Maximum number of economy seats" + details[2][i] + "\n")
+      print("Name: " + details[2][0])
+      print("Running cost per seat per 100km: " + details[2][1])
+      print("Maximum number of economy seats: " + details[2][2])
+      print("Details 4: " + details[2][3])
+      print("Details 5: " + details[2][4])
   if choice == 5:
     print("Quitting...")
     quit()
