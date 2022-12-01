@@ -85,14 +85,16 @@ def executeChoice(choice):
       time.sleep(1)
       firstClass = int(input("Enter number of first class seats\n"))
       if firstClass != 0:
-        if firstClass > details[aircraftID][4]:
+        if firstClass > int(details[aircraftID][4]):
           print("Error: number of first-class seats too large")
           repeat = True
           return repeat
         else:
-          print(f"Number of economy seats: {details[aircraftID][3] - (firstClass*2)}")
+          print(f"Number of economy seats: {int(details[aircraftID][3]) - (firstClass*2)}")
       print("\nOperation complete, returning to main menu... \n")
       time.sleep(1)
+      repeat = True
+      return repeat
     elif aircraftType == details[1][0]:
       aircraftID = 1
       time.sleep(0.5)
@@ -117,6 +119,8 @@ def executeChoice(choice):
           print(f"Number of economy seats: {details[aircraftID][3] - (firstClass*2)}")
       print("\nOperation complete, returning to main menu... \n")
       time.sleep(1)
+      repeat = True
+      return repeat
     elif aircraftType == details[2][0]:
       aircraftID = 2
       time.sleep(0.5)
@@ -141,6 +145,8 @@ def executeChoice(choice):
           print(f"Number of economy seats: {details[aircraftID][3] - (firstClass*2)}")
       print("\nOperation complete, returning to main menu... \n")
       time.sleep(1)
+      repeat = True
+      return repeat
   if choice == 5:
     print("Quitting...")
     quit()
