@@ -12,6 +12,8 @@ UKairportCode = ""
 nonUKairportCode = ""
 complete1 = 0
 repeat = True
+firstClass = 0
+aircraftID = 0
 
 #FUNCTIONS
 def printMenu():
@@ -67,6 +69,7 @@ def executeChoice(choice):
         repeat = True
         return repeat
     elif aircraftType == details[0][0]:
+      aircraftID = 0
       time.sleep(0.5)
       print("Name: " + details[0][0])
       time.sleep(0.5)
@@ -77,12 +80,19 @@ def executeChoice(choice):
       print("Details 4: " + details[0][3])
       time.sleep(0.5)
       print("Details 5: " + details[0][4])
-      repeat = True
       time.sleep(1)
+      if firstClass != 0:
+        if firstClass > details[aircraftID][4]:
+          print("Error: number of first-class seats too large")
+          repeat = True
+          return repeat
+        else:
+          print(f"Number of economy seats: {details[aircraftID][3] - (firstClass*2)}")
+      print("Operation complete, returning to main menu... \n")
       print("\nOperation complete, returning to main menu... \n")
       time.sleep(1)
-      return repeat
     elif aircraftType == details[1][0]:
+      aircraftID = 1
       time.sleep(0.5)
       print("Name: " + details[1][0])
       time.sleep(0.5)
@@ -93,27 +103,40 @@ def executeChoice(choice):
       print("Details 4: " + details[1][3])
       time.sleep(0.5)
       print("Details 5: " + details[1][4])
-      repeat = True
       time.sleep(1)
+      if firstClass != 0:
+        if firstClass > details[aircraftID][4]:
+          print("Error: number of first-class seats too large")
+          repeat = True
+          return repeat
+        else:
+          print(f"Number of economy seats: {details[aircraftID][3] - (firstClass*2)}")
+      print("Operation complete, returning to main menu... \n")
       print("Operation complete, returning to main menu... \n")
       time.sleep(1)
-      return repeat
     elif aircraftType == details[2][0]:
+      aircraftID = 2
       time.sleep(0.5)
       print("Name: " + details[2][0])
       time.sleep(0.5)
       print("Running cost per seat per 100km: " + details[2][1])
       time.sleep(0.5)
-      print("Maximum number of economy seats: " + details[2][2])
+      print("Maximum flight range (km): " + details[2][2])
       time.sleep(0.5)
-      print("Details 4: " + details[2][3])
+      print("Maximum number of economy seats: " + details[2][3])
       time.sleep(0.5)
-      print("Details 5: " + details[2][4])
-      repeat = True
+      print("Maximum number of first-class seats: " + details[2][4])
       time.sleep(1)
+      firstClass = int(input("Enter number o first class seats"))
+      if firstClass != 0:
+        if firstClass > details[aircraftID][4]:
+          print("Error: number of first-class seats too large")
+          repeat = True
+          return repeat
+        else:
+          print(f"Number of economy seats: {details[aircraftID][3] - (firstClass*2)}")
       print("Operation complete, returning to main menu... \n")
       time.sleep(1)
-      return repeat
   if choice == 5:
     print("Quitting...")
     quit()
