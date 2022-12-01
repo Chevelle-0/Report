@@ -18,7 +18,7 @@ def printMenu():
   print("[1] Enter airport details\n[2] Enter flight details\n[3] Enter price plan and calculate profit\n[4] Clear data\n[5] Quit")
   choice = 0
   while choice > 5 or choice < 1:
-    choice = int(input("\nEnter a number from 1 to 5 representing your choice"))
+    choice = int(input("\nEnter a number from 1 to 5 representing your choice\n"))
     print("\n")
   return choice
 
@@ -57,7 +57,8 @@ def executeChoice(choice):
     return repeat
   #FLIGHT DETAILS
   if choice == 2:
-    aircraftType = input("Enter type of aircraft")
+    aircraftType = input("Enter type of aircraft\n")
+    print("\n")
     if aircraftType != details[0][0] and aircraftType != details[1][0] and aircraftType != details[2][0]:
         print("\nError: invalid aircraft type\n")
         time.sleep(1)
@@ -66,23 +67,53 @@ def executeChoice(choice):
         repeat = True
         return repeat
     elif aircraftType == details[0][0]:
+      time.sleep(0.5)
       print("Name: " + details[0][0])
+      time.sleep(0.5)
       print("Running cost per seat per 100km: " + details[0][1])
+      time.sleep(0.5)
       print("Maximum number of economy seats: " + details[0][2])
+      time.sleep(0.5)
       print("Details 4: " + details[0][3])
+      time.sleep(0.5)
       print("Details 5: " + details[0][4])
+      repeat = True
+      time.sleep(1)
+      print("\nOperation complete, returning to main menu... \n")
+      time.sleep(1)
+      return repeat
     elif aircraftType == details[1][0]:
+      time.sleep(0.5)
       print("Name: " + details[1][0])
+      time.sleep(0.5)
       print("Running cost per seat per 100km: " + details[1][1])
+      time.sleep(0.5)
       print("Maximum number of economy seats: " + details[1][2])
+      time.sleep(0.5)
       print("Details 4: " + details[1][3])
+      time.sleep(0.5)
       print("Details 5: " + details[1][4])
+      repeat = True
+      time.sleep(1)
+      print("Operation complete, returning to main menu... \n")
+      time.sleep(1)
+      return repeat
     elif aircraftType == details[2][0]:
+      time.sleep(0.5)
       print("Name: " + details[2][0])
+      time.sleep(0.5)
       print("Running cost per seat per 100km: " + details[2][1])
+      time.sleep(0.5)
       print("Maximum number of economy seats: " + details[2][2])
+      time.sleep(0.5)
       print("Details 4: " + details[2][3])
+      time.sleep(0.5)
       print("Details 5: " + details[2][4])
+      repeat = True
+      time.sleep(1)
+      print("Operation complete, returning to main menu... \n")
+      time.sleep(1)
+      return repeat
   if choice == 5:
     print("Quitting...")
     quit()
