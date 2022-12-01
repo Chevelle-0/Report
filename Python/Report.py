@@ -28,6 +28,7 @@ def executeChoice(choice):
   #VARIABLES
   complete1 = 0
   repeat = True
+  firstClass =0
   #AIRPORT DETAILS
   if choice == 1:
     #UK CODE
@@ -75,11 +76,12 @@ def executeChoice(choice):
       time.sleep(0.5)
       print("Running cost per seat per 100km: " + details[0][1])
       time.sleep(0.5)
-      print("Maximum number of economy seats: " + details[0][2])
+      print("Maximum flight range (km): " + details[0][2])
       time.sleep(0.5)
-      print("Details 4: " + details[0][3])
+      print("Maximum number of economy seats:: " + details[0][3])
       time.sleep(0.5)
-      print("Details 5: " + details[0][4])
+      print("Maximum number of first-class seats: " + details[0][4])
+      print("\n")
       time.sleep(1)
       if firstClass != 0:
         if firstClass > details[aircraftID][4]:
@@ -98,11 +100,12 @@ def executeChoice(choice):
       time.sleep(0.5)
       print("Running cost per seat per 100km: " + details[1][1])
       time.sleep(0.5)
-      print("Maximum number of economy seats: " + details[1][2])
+      print("Maximum fliht range (km): " + details[1][2])
       time.sleep(0.5)
-      print("Details 4: " + details[1][3])
+      print("Maximum number of economy seats:" + details[1][3])
       time.sleep(0.5)
-      print("Details 5: " + details[1][4])
+      print("Maximum number of first-class seats 5: " + details[1][4])
+      print("\n")
       time.sleep(1)
       if firstClass != 0:
         if firstClass > details[aircraftID][4]:
@@ -126,6 +129,7 @@ def executeChoice(choice):
       print("Maximum number of economy seats: " + details[2][3])
       time.sleep(0.5)
       print("Maximum number of first-class seats: " + details[2][4])
+      print("\n")
       time.sleep(1)
       firstClass = int(input("Enter number o first class seats"))
       if firstClass != 0:
