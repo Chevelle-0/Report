@@ -16,6 +16,12 @@ firstClass = 0
 aircraftID = 0
 aircraftType = ""
 airportCodeNumber = 5
+firstClassPrice = 0
+economyClassPrice = 0
+flightCostperSeat = 0
+flightCost = 0
+flightIncome = 0
+flightProfit = 0
 
 #FUNCTIONS
 def printMenu():
@@ -28,6 +34,9 @@ def printMenu():
 
 #AIRPORT DETAILS
 def airportDetails():
+  global repeat
+  global UKairportCode
+  global nonUKairportCode
   complete = 0
   complete1 = 0
   #UK CODE
@@ -59,9 +68,11 @@ def airportDetails():
   for i in range(5):
     if airportCodes[i] == nonUKairportCode:
       airportCodeNumber = i
-  return repeat
+  repeat = True
+  return repeat, UKairportCode, nonUKairportCode
 
 def flightDetails():
+	global repeat
   aircraftType = input("Enter type of aircraft\n")
   print("\n")
   if aircraftType != details[0][0] and aircraftType != details[1][0] and aircraftType != details[2][0]:
@@ -157,34 +168,91 @@ def flightDetails():
 
 #ENTER PRICE PLAN
 def pricePlan():
+	global repeat
+	global flightCostperSeat
+	global flightCost
+	global flightIncome
+	global flightProfit
   if UKairportCode == "" or nonUKairportCode == "":
     print("Error: codes for UK and non UK airports not entered")
+    print("\n")
+    time.sleep(1)
     repeat = True
     return repeat
   if aircraftType == "":
     print("Error: aircraft type not entered")
+    print("\n")
+    time.sleep(1)
     repeat = True
     return repeat
   if firstClass == 0:
     print("Error: number of first class seats not entered")
+    print("\n")
+    time.sleep(1)
+    repeat = True
+    return repeat
   if UKaiportCode == "LPL" and distanceFromLPL[airportCodeNumber] > details[aircraftID][2]:
     print("Error: maximum flight range less than distance between airports")
+    print("\n")
+    time.sleep(1)
+    repeat = True
+    return repeat
   if UKaiportCode == "BOH" and distanceFromBOH[airportCodeNumber] > details[aircraftID][2]:
     print("Error: maximum flight range less than distance between airports")
-  
+    print("\n")
+    time.sleep(1)
+    repeat = True
+    return repeat
+  firstClassPrice = int(input("Enter the price of a first class seat"))
+  economyClassPrice = int(input("Enter the price of an economy seat"))
+  if UKairportCode == "B0H":
+	  flightCostperSeat = details[aircraftID][1] * distanceFromBOH / 100
+  if UKairportCode == "LPL":
+	  flightCostperSeat = details[aircraftID][1] * distanceFromBLPL / 100
+  flightCost =  flightCostperSeat * (details[aircraftID][4] + details[aircraftID][3])
+  flightIncome = details[aircraftID][4] * 1200 + details[aircraftID][3] * 400
+  flightProfit = flightIncome - flightCost
+  time.sleep(0.5)
+  print(f"Flight cost per seat: {flightCostperSeat}")
+  print("\n")
+  time.sleep(0.5)
+  print(f"Flight cost: {flightCost}")
+  print("\n")
+  time.sleep(0.5)
+  print(f"Flight income: {flightIncome}")
+  print("\n")
+  time.sleep(0.5)
+  print(f"flight profit: {flightProfit}")
+  print("\n")
+  time.sleep(2)
+  print("Operation complete, returning to main menu... \n")
+  time.sleep(1)
+  repeat = True
+  return repeat, flightCostperSeat, flightCost, flightIncome, flightProfit
 
 def executeChoice(choice):
   #VARIABLES
+	global repeat
+	global UKairportCode
+	global nonUKairportCode
+	global flightCostperSeat
+	global flightCost
+	global flightIncome
+	global flightProfit
+
   complete1 = 0
   repeat = True
   firstClass = 0
   #AIRPORT DETAILS
   if choice == 1:
-    repeat = airportDetails()
+    repeat, UKairportCode, nonUKairportCode = airportDetails()
     return repeat
   #FLIGHT DETAILS
   if choice == 2:
     repeat = flightDetails()
+    return repeat
+  if choice == 3:
+    repeat, flightCostperSeat, flightCost, flightIncome, flightProfit = pricePlan()
     return repeat
   if choice == 5:
     print("Quitting...")
