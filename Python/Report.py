@@ -105,7 +105,7 @@ def flightDetails():
 		print("\n")
 		time.sleep(1)
 		firstClass = int(input("Enter number of first class seats\n"))
-		if firstClass != 0:
+		if firstClass > 0:
 			if firstClass > int(details[aircraftID][4]):
 				print("\nError: number of first-class seats too large\n")
 				time.sleep(0.5)
@@ -117,6 +117,8 @@ def flightDetails():
 				time.sleep(0.5)
 				print(f"\nNumber of economy seats: {int(details[aircraftID][3]) - (firstClass*2)}")
 				time.sleep(1)
+		else:
+			print("Error: Number of first class seats too small, returing to main menu...")
 		print("\nOperation complete, returning to main menu... \n")
 		time.sleep(1)
 		repeat = True
@@ -224,13 +226,13 @@ def pricePlan():
 	if UKairportCode == "LPL":
 		LPLdistance = int(distanceFromLPL[airportCodeNumber])
 	if	UKairportCode == "BOH":	
-		BOHdistance = int(distanceFromLPL[airportCodeNumber])
+		BOHdistance = int(distanceFromBOH[airportCodeNumber])
 	if UKairportCode == "B0H":
 		flightCostperSeat = detail1 * BOHdistance / 100
 	if UKairportCode == "LPL":
 		flightCostperSeat = detail1 * LPLdistance / 100
 	flightCost =  flightCostperSeat * (detail4 + detail3)
-	flightIncome = detail4 * 1200 + detail3 * 400
+	flightIncome = detail4 * firstClassPrice + detail3 * economyClassPrice
 	flightProfit = flightIncome - flightCost
 	time.sleep(0.5)
 	print(f"Flight cost per seat: {flightCostperSeat}")
@@ -293,6 +295,10 @@ def clearData():
 	detail4 = 0
 	LPLdistance = 0
 	BOHdistance = 0
+	print("Data cleared, returning to main menu...
+	")
+	repeat = True 
+	return repeat
 	
 
 def executeChoice(choice):
@@ -311,6 +317,9 @@ def executeChoice(choice):
 		return repeat
 	if choice == 3:
 		repeat = pricePlan()
+		return repeat
+	if choice == 4:
+		repeat = clearData()
 		return repeat
 	if choice == 5:
 		print("Quitting...")
