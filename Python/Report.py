@@ -251,27 +251,27 @@ def pricePlan():
 	return repeat
 
 def clearData():
-	choice
-	UKairportCode 
-	nonUKairportCode 
-	complete1 
-	repeat 
-	firstClass 
-	aircraftID 
-	aircraftType 
-	airportCodeNumber
-	firstClassPrice 
-	economyClassPrice 
-	flightCostperSeat 
-	flightCost 
-	flightIncome
-	flightProfit 
-	detail1 
-	detail2 
-	detail3 
-	detail4 = 0
-	LPLdistance = 0
-	BOHdistance = 0
+	global choice
+	global UKairportCode 
+	global nonUKairportCode 
+	global complete1 
+	global repeat 
+	global firstClass 
+	global aircraftID 
+	global aircraftType 
+	global airportCodeNumber
+	global firstClassPrice 
+	global economyClassPrice 
+	global flightCostperSeat 
+	global flightCost 
+	global flightIncome
+	global flightProfit 
+	global detail1 
+	global detail2 
+	global detail3 
+	global detail4
+	global LPLdistance
+	global BOHdistance 
 	choice = 0
 	UKairportCode = ""
 	nonUKairportCode = ""
