@@ -295,8 +295,7 @@ def clearData():
 	detail4 = 0
 	LPLdistance = 0
 	BOHdistance = 0
-	print("Data cleared, returning to main menu...
-	")
+	print("Data cleared, returning to main menu...")
 	repeat = True 
 	return repeat
 	
